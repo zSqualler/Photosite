@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body id="body">
+  <main>
+
+    <!--Sprite-->
+    <svg style="display: none;">
+      <symbol id="photo" viewBox="0 0 24 24">
+        <g>
+          <path d="M0 0h24v24H0z" fill="none" />
+          <circle cx="12" cy="12" r="3.2" />
+          <path
+            d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
+        </g>
+      </symbol>
+
+      <symbol id="camera" viewBox="0 0 24 24">
+        <g>
+          <path
+            d="M9.4 10.5l4.77-8.26C13.47 2.09 12.75 2 12 2c-2.4 0-4.6.85-6.32 2.25l3.66 6.35.06-.1zM21.54 9c-.92-2.92-3.15-5.26-6-6.34L11.88 9h9.66zm.26 1h-7.49l.29.5 4.76 8.25C21 16.97 22 14.61 22 12c0-.69-.07-1.35-.2-2zM8.54 12l-3.9-6.75C3.01 7.03 2 9.39 2 12c0 .69.07 1.35.2 2h7.49l-1.15-2zm-6.08 3c.92 2.92 3.15 5.26 6 6.34L12.12 15H2.46zm11.27 0l-3.9 6.76c.7.15 1.42.24 2.17.24 2.4 0 4.6-.85 6.32-2.25l-3.66-6.35-.93 1.6z" />
+        </g>
+      </symbol>
+
+      <symbol id="landscape" viewBox="0 0 24 24">
+        <g>
+          <path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z" />
+        </g>
+      </symbol>
+
+      <symbol id="palette" viewBox="0 0 24 24">
+        <g>
+          <path
+            d="M12,2C6.49,2,2,6.49,2,12s4.49,10,10,10c1.38,0,2.5-1.12,2.5-2.5c0-0.61-0.23-1.2-0.64-1.67c-0.08-0.1-0.13-0.21-0.13-0.33 c0-0.28,0.22-0.5,0.5-0.5H16c3.31,0,6-2.69,6-6C22,6.04,17.51,2,12,2z M17.5,13c-0.83,0-1.5-0.67-1.5-1.5c0-0.83,0.67-1.5,1.5-1.5 s1.5,0.67,1.5,1.5C19,12.33,18.33,13,17.5,13z M14.5,9C13.67,9,13,8.33,13,7.5C13,6.67,13.67,6,14.5,6S16,6.67,16,7.5 C16,8.33,15.33,9,14.5,9z M5,11.5C5,10.67,5.67,10,6.5,10S8,10.67,8,11.5C8,12.33,7.33,13,6.5,13S5,12.33,5,11.5z M11,7.5 C11,8.33,10.33,9,9.5,9S8,8.33,8,7.5C8,6.67,8.67,6,9.5,6S11,6.67,11,7.5z" />
+        </g>
+      </symbol>
+
+      <symbol id="calendar" viewBox="0 0 20 20">
+        <g>
+          <path
+            d="M15.5,4H14V2h-1.5v2h-5V2H6v2H4.5C3.67,4,3,4.68,3,5.5v11C3,17.32,3.67,18,4.5,18h11c0.83,0,1.5-0.68,1.5-1.5v-11 C17,4.68,16.33,4,15.5,4z M15.5,16.5h-11V9h11V16.5z M7.5,12H6v-1.5h1.5V12z M10.75,12h-1.5v-1.5h1.5V12z M14,12h-1.5v-1.5H14V12z M7.5,15H6v-1.5h1.5V15z M10.75,15h-1.5v-1.5h1.5V15z M14,15h-1.5v-1.5H14V15z" />
+        </g>
+      </symbol>
+
+      <symbol id="tune" viewBox="0 0 24 24">
+        <g>
+          <path
+            d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z" />
+        </g>
+      </symbol>
+
+      <symbol id="phone" viewBox="0 0 24 24">
+        <g>
+          <path
+            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
+        </g>
+      </symbol>
+
+      <symbol id="facebook" viewBox="0 0 320 512">
+        <g>
+          <path
+            d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+        </g>
+      </symbol>
+
+      <symbol id="twitter" viewBox="0 0 512 512">
+        <g>
+          <path
+            d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+        </g>
+      </symbol>
+
+      <symbol id="insta" viewBox="0 0 448 512">
+        <g>
+          <path
+            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+        </g>
+      </symbol>
+    </svg>
+
+    <!--Header-->
+    <header class="header" id="header">
+      <div class="container__header">
+        <div class="header-inner">
+          <a class="header-inner__logo" href="#">
+            <img class="header-inner__img" src="../images/icons/logo.svg" alt="logo img">
+            <div class="header-inner__logo--text">
+              Logo
+            </div>
+          </a>
+          <nav class="header-inner__menu">
+            <div class="header-inner__btn">
+              <span></span>
+            </div>
+            <ul class="header-inner__list">
+              <li class="header-inner__item">
+                <a class="header-inner__link" href="#intro">
+                  About
+                </a>
+              </li>
+              <li class="header-inner__item">
+                <a class="header-inner__link" href="#skills">
+                  Experience
+                </a>
+              </li>
+              <li class="header-inner__item">
+                <a class="header-inner__link" href="#slider">
+                  Works
+                </a>
+              </li>
+              <li class="header-inner__item">
+                <a class="header-inner__link" href="#contact">
+                  Contact
+                </a>
+              </li>
+              <li class="header-inner__item">
+                <a class="header-inner__link" href="#portfolio">
+                  Portfolio
+                </a>
+              </li>
+              <li class="header-inner__item">
+                <a class="header-inner__link" href="#price">
+                  Price
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!--Intro-->
+    <section class="intro" id="intro">
+      <div class="container">
+        <div class="intro-inner">
+          <div class="intro-inner__img">
+            <img src="../images/pes.jpg" alt="">
+          </div>
+          <div class="intro-inner__about">
+            <h2 class="intro-inner__title title">
+              About Me
+            </h2>
+            <p class="intro-inner__text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut eum error iste cupiditate fugit rem nemo
+              molestiae natus, provident est ratione sed vitae nobis eveniet ex dolore unde, eligendi a.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut eum error iste cupiditate fugit rem nemo
+              molestiae natus, provident est ratione sed vitae nobis eveniet ex dolore unde, eligendi a.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut eum error iste cupiditate fugit rem nemo
+              molestiae natus, provident est ratione sed vitae nobis eveniet ex dolore unde, eligendi a.
+            </p>
+            <div class="intro-inner__button">
+              <a class="intro-inner__link" href="#contact">
+                Contacts
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Skills-->
+    <section class="skills" id="skills">
+      <div class="container">
+        <div class="skills__title title">My Experience</div>
+        <div class="skills__items">
+
+          <div class="skills__item">
+            <div class="skills__img">
+              <svg class="skills__icon">
+                <use xlink:href="#camera"></use>
+              </svg>
+            </div>
+            <div class="skills__about">
+              <h4 class="skills__about-title">
+                Lorem ipsum dolor
+              </h4>
+              <p class="skills__about-text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius ut voluptates optio, atque sed, provident
+              </p>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__img">
+              <svg class="skills__icon">
+                <use xlink:href="#photo"></use>
+              </svg>
+            </div>
+            <div class="skills__about">
+              <h4 class="skills__about-title">
+                Lorem ipsum dolor
+              </h4>
+              <p class="skills__about-text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius ut voluptates optio, atque sed, provident
+                dolorem
+              </p>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__img">
+              <svg class="skills__icon">
+                <use xlink:href="#palette"></use>
+              </svg>
+            </div>
+            <div class="skills__about">
+              <h4 class="skills__about-title">
+                Lorem ipsum dolor
+              </h4>
+              <p class="skills__about-text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius ut voluptates optio, atque sed, provident
+                dolorem
+              </p>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__img">
+              <svg class="skills__icon">
+                <use xlink:href="#calendar"></use>
+              </svg>
+            </div>
+            <div class="skills__about">
+              <h4 class="skills__about-title">
+                Lorem ipsum dolor
+              </h4>
+              <p class="skills__about-text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius ut voluptates optio, atque sed, provident
+                dolorem
+              </p>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__img">
+              <svg class="skills__icon">
+                <use xlink:href="#landscape"></use>
+              </svg>
+            </div>
+            <div class="skills__about">
+              <h4 class="skills__about-title">
+                Lorem ipsum dolor
+              </h4>
+              <p class="skills__about-text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius ut voluptates optio, atque sed, provident
+                dolorem
+              </p>
+            </div>
+          </div>
+
+          <div class="skills__item">
+            <div class="skills__img">
+              <svg class="skills__icon">
+                <use xlink:href="#tune"></use>
+              </svg>
+            </div>
+            <div class="skills__about">
+              <h4 class="skills__about-title">
+                Lorem ipsum dolor
+              </h4>
+              <p class="skills__about-text">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius ut voluptates optio, atque sed, provident
+                dolorem
+              </p>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!--gallery slider-->
+    <section class="gallery" id="slider">
+      <div class="container">
+        <div class="gallery__inner">
+          <h2 class="gallery__title title">
+            My Works
+          </h2>
+          <div class="slider">
+
+            <div class="slider__item">
+              <img src="../images/slider/1.jpg" alt="">
+            </div>
+
+            <div class="slider__item">
+              <img src="../images/slider/2.jpg" alt="">
+            </div>
+
+            <div class="slider__item">
+              <img src="../images/slider/3.jpg" alt="">
+            </div>
+
+            <div class="slider__item">
+              <img src="../images/slider/4.jpg" alt="">
+            </div>
+
+            <div class="slider__item">
+              <img src="../images/slider/5.jpg" alt="">
+            </div>
+
+            <div class="slider__item">
+              <img src="../images/slider/6.jpg" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Contact-->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact__inner">
+          <h3 class="contact__title title">
+            Contacts
+          </h3>
+          <div class="contact__info">
+
+            <div class="contact__items">
+              <div class="contact__item">
+                <div class="contact__item--phone">
+                  My number:<br>
+                  +375 (29) 999-99-99
+                </div>
+              </div>
+              <div class="contact__item">
+                <div class="contact__item--mail">
+                  My email:<br>
+                  Autumn.vlad@gmail.com
+                </div>
+              </div>
+              <div class="contact__item">
+                <div class="contact__item--location">
+                  My location:<br>
+                  Gdańsk, Poland
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-social">
+              <div class="contact-social__img">
+                <img src="../images/vlad.jpg" alt="">
+              </div>
+
+              <div class="contact-social__items">
+                <a class="contact-social__item" href="#">
+                  <svg class="contact-social__icon">
+                    <use xlink:href="#facebook"></use>
+                  </svg>
+                </a>
+                <a class="contact-social__item" href="#">
+                  <svg class="contact-social__icon">
+                    <use xlink:href="#insta"></use>
+                  </svg>
+                </a>
+                <a class="contact-social__item" href="#">
+                  <svg class="contact-social__icon">
+                    <use xlink:href="#twitter"></use>
+                  </svg>
+                </a>
+              </div>
+
+            </div>
+
+            <div class="contact-description">
+              <h4 class="contact-description__title title">
+                Как со мной Связаться?
+              </h4>
+              <p class="contact-description__text">
+                Вы можете позвонить мне на мобильный телефон с 8:00 до 16:00, или написать на email, предпочтительным
+                вариантом будет связь через социальные сети. Отвечаю быстро, пишите.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!--Portfolio-->
+    <section class="portfolio" id="portfolio">
+
+      <div class="portfolio__item">
+        <img class="portfolio__photo" src="../images/portfolio/1.jpg" alt="portfolio img">
+        <div class="portfolio__content">
+          <div class="portfolio__title">Project Name</div>
+          <div class="portfolio__text">Information about photo</div>
+        </div>
+      </div>
+
+      <div class="portfolio__item">
+        <img class="portfolio__photo" src="../images/portfolio/2.jpg" alt="portfolio img">
+        <div class="portfolio__content">
+          <div class="portfolio__title">Project Name</div>
+          <div class="portfolio__text">Information about photo</div>
+        </div>
+      </div>
+
+      <div class="portfolio__item">
+        <img class="portfolio__photo" src="../images/portfolio/3.jpg" alt="portfolio img">
+        <div class="portfolio__content">
+          <div class="portfolio__title">Project Name</div>
+          <div class="portfolio__text">Information about photo</div>
+        </div>
+      </div>
+
+      <div class="portfolio__item">
+        <img class="portfolio__photo" src="../images/portfolio/4.jpg" alt="portfolio img">
+        <div class="portfolio__content">
+          <div class="portfolio__title">Project Name</div>
+          <div class="portfolio__text">Information about photo</div>
+        </div>
+      </div>
+
+      <div class="portfolio__item">
+        <img class="portfolio__photo" src="../images/portfolio/5.jpg" alt="portfolio img">
+        <div class="portfolio__content">
+          <div class="portfolio__title">Project Name</div>
+          <div class="portfolio__text">Information about photo</div>
+        </div>
+      </div>
+
+      <div class="portfolio__item">
+        <img class="portfolio__photo" src="../images/portfolio/6.jpg" alt="portfolio img">
+        <div class="portfolio__content">
+          <div class="portfolio__title">Project Name</div>
+          <div class="portfolio__text">Information about photo</div>
+        </div>
+      </div>
+
+      <div class="portfolio__item">
+        <img class="portfolio__photo" src="../images/portfolio/7.jpg" alt="portfolio img">
+        <div class="portfolio__content">
+          <div class="portfolio__title">Project Name</div>
+          <div class="portfolio__text">Information about photo</div>
+        </div>
+      </div>
+
+      <div class="portfolio__item">
+        <img class="portfolio__photo" src="../images/portfolio/8.jpg" alt="portfolio img">
+        <div class="portfolio__content">
+          <div class="portfolio__title">Project Name</div>
+          <div class="portfolio__text">Information about photo</div>
+        </div>
+      </div>
+    </section>
+
+    <!--Price-->
+    <section class="price" id="price">
+      <div class="container">
+        <div class="price__inner">
+          <h3 class="price__title title">Price</h3>
+          <div class="price__items">
+
+            <ul class="price__item">
+              <li class="price__item-title">Съемка мероприятий</li>
+              <li class="price__item-text">Свадебная фотосессия</li>
+              <li class="price__item-text">Семейная фотосессия</li>
+              <li class="price__item-text">Фотосессии беременности</li>
+              <li class="price__item-text">Фотосъемки девичника</li>
+              <li class="price__item-text">Фотосессии влюбленных</li>
+              <li class="price__item-price">10$</li>
+            </ul>
+
+            <ul class="price__item">
+              <li class="price__item-title">Цена за обработку фотографии</li>
+              <li class="price__item-text">Ретушь крупных портретов</li>
+              <li class="price__item-text">Черно-белая серия фотографий</li>
+              <li class="price__item-text">Большой формат</li>
+              <li class="price__item-text">Отснятые фото в цветокоррекции</li>
+              <li class="price__item-text">Поправить фигуру, пропорции</li>
+              <li class="price__item-price">10$</li>
+            </ul>
+
+            <ul class="price__item">
+              <li class="price__item-title">Работа на других условиях</li>
+              <li class="price__item-text">Фотосъемка интерьеров</li>
+              <li class="price__item-text">Корпоративы и вечеринки</li>
+              <li class="price__item-text">Модельные тесты</li>
+              <li class="price__item-text">Фотосессия спортивных событий</li>
+              <li class="price__item-text">Фотосессия животных</li>
+              <li class="price__item-price">10$</li>
+            </ul>
+
+          </div>
+
+          <div class="price__information">
+            <h4 class="price__information-title">
+              More Information
+            </h4>
+            <div class="price__information-inner">
+              <div class="price__information-photo">
+                <img class="price__information-img" src="../images/photographer.jpg" alt="price information">
+              </div>
+              <div class="price__information-about">
+                <p class="price__information-text">- Обсуждение деталей, сюжета съемки, подбор места.</p>
+                <p class="price__information-text">- Фотосъёмка на улице, дома, в студии.</p>
+                <p class="price__information-text">- Тоновая и цветовая обработка всех фотографий.</p>
+                <p class="price__information-text">- Ретушь кожи для крупных портретов.</p>
+                <p class="price__information-text">- Передача фото через галерею.
+                <p class="price__information-text">- Фотографии на флешке.</p>
+                <p class="price__information-text">- Запись на съёмку с авансом 20%, оплата в день съёмки.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="footer">
+      <a class="header-inner__logo" href="#">
+        <img class="header-inner__img" src="../images/icons/logo.svg" alt="logo img">
+      </a>
+    </footer>
+
+  </main>
+  <script src="js/main.min.js"></script>
+</body>
+
+</html>
